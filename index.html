@@ -376,14 +376,14 @@ p{max-width:72ch}
       <span>Needs Tree</span>
     </div>
     <div class="page active" id="page-landing"><div id="landingContent"></div></div>
-<div class="page" id="page-onboarding"><div class="onboarding" id="onboardingContent"></div></div>
+    <div class="page" id="page-onboarding"><div class="onboarding" id="onboardingContent"></div></div>
     <div class="page" id="page-context"><div class="today-hero"><h1>Who is taking this today?</h1><p>This tailors the language and the needs we surface. Nothing is stored anywhere.</p></div><div class="context-grid" id="contextGrid"></div></div>
     <div class="page" id="page-today"><div class="today-date" id="todayDate"></div><div class="today-hero"><h1>What layer needs feeding today?</h1><p>Your Needs Tree is a map of what sustains you, shapes you, and flows through you. Name the need before it becomes behavior.</p></div><div id="todayBody"></div></div>
     <div class="page" id="page-diagnostic"><div id="diagContent"></div></div>
     <div class="page" id="page-dark">
-  <div class="today-hero"><h1>The needs you were taught to hide.</h1><p>Eleven cards for control, anger, attention, revenge, and the rest. They're not flaws. They're needs that went underground and came out sideways.</p></div>
-  <div id="darkBody"></div>
-</div>
+      <div class="today-hero"><h1>The needs you were taught to hide.</h1><p>Eleven cards for control, anger, attention, revenge, and the rest. They're not flaws. They're needs that went underground and came out sideways.</p></div>
+      <div id="darkBody"></div>
+    </div>
     <div class="page" id="page-play"><div id="playContent"></div></div>
     <div class="page" id="page-learn">
       <div class="today-hero"><h1>Learn</h1><p>Short pieces about needs, why they hide, and how to work with them. Written in plain language.</p></div>
@@ -2219,9 +2219,9 @@ function renderSayItDone(c){
     addCardHtml+
     '<div class="closing-prompt" style="max-width:520px;margin:0 auto">'+
       '<h3>One optional question</h3>'+
-      '<p>What was it like to say that out loud: without being fixed?</p>'+
-      '<textarea idflex="sayItReflection" placeholder="Write something, or skip-start this."></textarea>'+
-      '<div class="game">-actions" style="margin-top:14px;'justify-content+
+      '<p>What was it like to say that out loud without being fixed?</p>'+
+      '<textarea id="sayItReflection" placeholder="Write something, or skip this."></textarea>'+
+      '<div class="game-actions" style="margin-top:14px;justify-content:flex-start">'+
         '<button class="btn btn-primary" onclick="saveSayItReflection()">Save to journal</button>'+
         '<button class="btn btn-outline" onclick="playAnother()">Play another</button>'+
       '</div>'+
@@ -2300,13 +2300,12 @@ window.saveStrategyReflection=saveStrategyReflection;
    INIT
    ============================================================ */
 loadState();
-renderContext();
 if(state.diagScores){
   navigateTo('today');
-}else{
+} else {
   renderLanding();
+  navigateTo('landing');
 }
-  if(state.diagScores && state.view !== 'context'){ /* stay on onboarding unless user has already completed */ }
 
 document.addEventListener('click', function(){ setTimeout(saveState, 50); }, true);
 document.addEventListener('input', function(){ saveState(); }, true);
